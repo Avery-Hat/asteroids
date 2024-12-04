@@ -22,7 +22,8 @@ def main():
                 running = False #makes game quit
         screen.fill("black") #making background black
         dt = clock.tick(60)/1000 #converting to seconds, and FPS set to 60
-        player.draw(screen)
+        player.draw(screen) #character model (triangle)
+        player.update(dt) #updates player state with deltatime(dt)
         pygame.display.flip() #always at the bottom
         
         
