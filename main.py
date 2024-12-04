@@ -16,8 +16,8 @@ def main():
     dt = 0 #delta time
     updateable_group = pygame.sprite.Group() #created group for updated items (e.g. deltatime)
     drawable_group = pygame.sprite.Group() #created group for drawable items (e.g. char model)
-    Player.containers = (updateable_group, drawable_group)
-    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+    Player.containers = (updateable_group, drawable_group) #putting player with both groups
+    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2) #the character itself
 
     while running: #inf loop to keep game running
         for event in pygame.event.get(): 
