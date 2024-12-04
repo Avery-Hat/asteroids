@@ -6,6 +6,7 @@ class Player(CircleShape):
     def __init__(self,x,y):
         super().__init__(x,y,PLAYER_RADIUS) #pulling data from circleshape
         self.rotation = 0
+        
 
     # in the player class, given from chapter
     def triangle(self):
@@ -29,3 +30,11 @@ class Player(CircleShape):
             self.rotate(dt, -1) #negative forces left, using a key
         if keys[pygame.K_d]:
             self.rotate(dt, 1) #positive forces right, using d key
+        if keys[pygame.K_w]:
+            self.move(dt,1)
+        if keys[pygame.K_s]:
+            self.move(dt,-1)
+
+    def move(self, dt, direction):
+        forward = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += forward * PLAYER_SPEED * dt * direction
