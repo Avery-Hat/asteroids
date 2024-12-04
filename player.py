@@ -3,14 +3,9 @@ from circleshape import * #imported from circleshape.py
 from constants import * #imported from constants.py
 
 class Player(CircleShape):
-    containers = []
-
     def __init__(self,x,y):
         super().__init__(x,y,PLAYER_RADIUS) #pulling data from circleshape
         self.rotation = 0
-        
-        for group in Player.containers:
-            group.add(self)
 
     # in the player class, given from chapter
     def triangle(self):
