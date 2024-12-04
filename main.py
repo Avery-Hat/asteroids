@@ -13,13 +13,20 @@ def main():
     running = True
     black = (0, 0, 0)
     screen.fill(black) #making background black
+    clock = pygame.time.Clock() #new variable for FPS
+    dt = 0 #delta time
+
 
     while running: #inf loop to keep game running
-        for quit in pygame.event.get(): 
-            if quit.type == pygame.QUIT:
+        for event in pygame.event.get(): 
+            if event.type == pygame.QUIT:
                 running = False #makes game quit
+        clock.tick(60) #FPS set to 60
+        dt = clock.tick(60)/1000 #converting to seconds
         pygame.display.flip() #always at the bottom
-    
+        
+        
     pygame.quit()
+
 if __name__ == "__main__":
     main()
