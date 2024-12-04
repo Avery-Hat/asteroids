@@ -14,6 +14,9 @@ def main():
     running = True
     clock = pygame.time.Clock() #new variable for FPS
     dt = 0 #delta time
+    updateable_group = pygame.sprite.Group() #created group for updated items (e.g. deltatime)
+    drawable_group = pygame.sprite.Group() #created group for drawable items (e.g. char model)
+    Player.containers = (updateable_group, drawable_group)
     player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
 
     while running: #inf loop to keep game running
@@ -22,8 +25,10 @@ def main():
                 running = False #makes game quit
         screen.fill("black") #making background black
         dt = clock.tick(60)/1000 #converting to seconds, and FPS set to 60
-        player.draw(screen) #character model (triangle)
-        player.update(dt) #updates player state with deltatime(dt)
+        for obj in updateable_group: 
+            obj.update(dt) #made updateable group with delta
+        for obj in drawable_group:
+            obj.draw(screen) #made drawable group with screen (character model)
         pygame.display.flip() #always at the bottom
         
         
