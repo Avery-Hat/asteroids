@@ -1,11 +1,12 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
+#project made with Boot.Dev - Asteroids section
 import pygame
 from constants import * #importing all, per course instructions.
 from player import Player #importing the character model
 from asteroid import Asteroid #chapter 3, part 1
-from asteroidfield import AsteroidField
+from asteroidfield import AsteroidField #chapter 3, part 1, section 7
 
 def main():
     pygame.init() #initialized
