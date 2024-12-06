@@ -4,19 +4,28 @@
 import pygame
 from constants import * #importing all, per course instructions.
 from player import Player #importing the character model
+from asteroid import Asteroid #chapter 3, part 1
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init() #initialized
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #720p
     running = True
     clock = pygame.time.Clock() #new variable for FPS
     dt = 0 #delta time
-    updateable_group = pygame.sprite.Group() #created group for updated items (e.g. deltatime)
+
+    updatable_group = pygame.sprite.Group() #created group for updated items (e.g. deltatime)
     drawable_group = pygame.sprite.Group() #created group for drawable items (e.g. char model)
-    Player.containers = (updateable_group, drawable_group) #putting player with both groups
+    asteroids = pygame.sprite.Group() #from asteroids.py, setting up asteroids
+
+    Player.containers = (updatable_group, drawable_group) #putting player with both groups
+    Asteroid.containers = (asteroids, updatable_group, drawable_group) #from asteroids.py
+    AsteroidField.containers = (updatable_group,) #kept as tuple for consistency
+    asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2) #the character itself
 
     while running: #inf loop to keep game running
@@ -25,7 +34,7 @@ def main():
                 running = False #makes game quit
         screen.fill("black") #making background black
         dt = clock.tick(60)/1000 #converting to seconds, and FPS set to 60
-        for obj in updateable_group: 
+        for obj in updatable_group: 
             obj.update(dt) #made updateable group with delta
         for obj in drawable_group:
             obj.draw(screen) #made drawable group with screen (character model)
