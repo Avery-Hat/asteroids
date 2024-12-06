@@ -3,6 +3,7 @@
 # throughout this file
 #project made with Boot.Dev - Asteroids section
 import pygame
+import sys
 from constants import * #importing all, per course instructions.
 from player import Player #importing the character model
 from asteroid import Asteroid #chapter 3, part 1
@@ -38,7 +39,7 @@ def main():
         for obj in asteroids: #checks for collision between player and astroid
             if obj.collision(player) == True:
                 print("Game Over!")
-                running = False  #quits game upon collision
+                sys.exit()  #quits game upon collision
         for obj in updatable_group: 
             obj.update(dt) #made updateable group with delta
         for obj in drawable_group:
