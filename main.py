@@ -35,6 +35,10 @@ def main():
                 running = False #makes game quit
         screen.fill("black") #making background black
         dt = clock.tick(60)/1000 #converting to seconds, and FPS set to 60
+        for obj in asteroids: #checks for collision between player and astroid
+            if obj.collision(player) == True:
+                print("Game Over!")
+                running = False  #quits game upon collision
         for obj in updatable_group: 
             obj.update(dt) #made updateable group with delta
         for obj in drawable_group:
