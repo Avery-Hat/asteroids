@@ -1,6 +1,9 @@
 import pygame
 from constants import *
 from circleshape import CircleShape
+#data copied from asteroid.py, used for bullets
+#changed radius to its own using new variable in constants.py called SHOT_RADIUS
+
 
 class Shot(CircleShape):
     def __init__(self, x, y):

@@ -12,3 +12,4 @@ PLAYER_SPEED = 200
 
 SHOT_RADIUS = 5 #Chapter 3, part 3
 PLAYER_SHOOT_SPEED = 500 #Chapter 3, part 3
+PLAYER_SHOOT_COUNTDOWN = 0.3 # seconds; Chapter 3 part 4
