@@ -8,6 +8,7 @@ from constants import * #importing all, per course instructions.
 from player import Player #importing the character model
 from asteroid import Asteroid #chapter 3, part 1
 from asteroidfield import AsteroidField #chapter 3, part 1, section 7
+from shot import Shot #importing bullet from shot
 
 def main():
     pygame.init() #initialized
@@ -23,11 +24,13 @@ def main():
     updatable_group = pygame.sprite.Group() #created group for updated items (e.g. deltatime)
     drawable_group = pygame.sprite.Group() #created group for drawable items (e.g. char model)
     asteroids = pygame.sprite.Group() #from asteroids.py, setting up asteroids
+    shots = pygame.sprite.Group() #from player.py, setting up player's space laser ~~
 
     Player.containers = (updatable_group, drawable_group) #putting player with both groups
+    Shot.containers = (shots, updatable_group, drawable_group) #space lasers put in groups ~~
     Asteroid.containers = (asteroids, updatable_group, drawable_group) #from asteroids.py
     AsteroidField.containers = (updatable_group,) #kept as tuple for consistency
-    asteroid_field = AsteroidField()
+    asteroid_field = AsteroidField() #asteroidfield.py import
     player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2) #the character itself
 
     while running: #inf loop to keep game running

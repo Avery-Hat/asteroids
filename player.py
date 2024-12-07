@@ -1,13 +1,14 @@
 #Chapter 2, Part 5
 from circleshape import * #imported from circleshape.py
 from constants import * #imported from constants.py
+from shot import Shot #importing bullet from shot
 
 class Player(CircleShape):
     def __init__(self,x,y):
         super().__init__(x,y,PLAYER_RADIUS) #pulling data from circleshape
         self.rotation = 0
 
-    # in the player class, given from chapter
+    # in the player class, given from chapter 2, part 5
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         right = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
@@ -37,3 +38,12 @@ class Player(CircleShape):
             self.move(dt,1)
         if keys[pygame.K_s]:
             self.move(dt,-1)
+        if keys[pygame.K_SPACE]:
+            self.shoot()
+
+    def shoot(self):
+        x = self.position[0]
+        y = self.position[1]
+        shot = Shot(x, y)
+        shot.velocity = pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+        
