@@ -43,12 +43,12 @@ def main():
             if obj.collision(player) == True:
                 print("Game Over!")
                 sys.exit()  #quits game upon collision
-        for obj in asteroids: #loop for asteroid destruction upon impact
+        for obj in asteroids: #loop for asteroid destruction upon impact; Ch3,P6
             for bullet in shots: #loop for bullet destruction upon impact
                 if bullet.collision(obj) == True: #checks for collision between shot and asteroid
-                    obj.kill() #destroys asteroid upon impact
                     bullet.kill() #destroys bullet upon impact
-                
+                    obj.split() #splitting asteroid
+                    
         for obj in updatable_group: 
             obj.update(dt) #made updateable group with delta
         for obj in drawable_group:
