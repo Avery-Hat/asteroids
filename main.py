@@ -43,12 +43,19 @@ def main():
             if obj.collision(player) == True:
                 print("Game Over!")
                 sys.exit()  #quits game upon collision
+        for obj in asteroids: #loop for asteroid destruction upon impact
+            for bullet in shots: #loop for bullet destruction upon impact
+                if bullet.collision(obj) == True: #checks for collision between shot and asteroid
+                    obj.kill() #destroys asteroid upon impact
+                    bullet.kill() #destroys bullet upon impact
+                
         for obj in updatable_group: 
             obj.update(dt) #made updateable group with delta
         for obj in drawable_group:
             obj.draw(screen) #made drawable group with screen (character model)
         pygame.display.flip() #always at the bottom
         
+
         
     pygame.quit()
 
