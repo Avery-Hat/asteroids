@@ -26,13 +26,13 @@ class Asteroid(CircleShape):
         random_angle = random.uniform(20, 50) #to make two random angles for the new asteroids
 
         rotate1 = self.velocity.rotate(random_angle) #asteroid 1 angle
-        rotate2 = self.velocity.rotate(-random_angle) #asteroid 2 angle
+        rotate2 = self.velocity.rotate(-random_angle) #asteroid 2 
 
         new_radius = self.radius - ASTEROID_MIN_RADIUS
         asteroid = Asteroid(self.position.x, self.position.y, new_radius) #asteroid 1
         asteroid.velocity = rotate1 * 1.2
-
         asteroid = Asteroid(self.position.x,self.position.y, new_radius) #asteroid 2
+        asteroid.velocity = rotate2 * 1.2
 
 
         
