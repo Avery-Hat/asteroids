@@ -11,6 +11,6 @@ class Score(object):
         screen.blit(self.text,(100,100))
     
     def score_up(self):
-        self.count += 1
+        self.count += 100
         self.text = self.font.render("Score :" +str(self.count),1,"white")
         
